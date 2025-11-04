@@ -1,29 +1,31 @@
-    <h1 align="center">TaskFlow</h1>
-    <p align="center">
-        <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Report Bug</a>
-        ·
-        <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Request Feature</a>
-    </p>
-
 <p align="center">
-    <a href="https://github.com/wassii-khan-git/TaskFlow/blob/main/LICENSE">
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
     </a>
-    <a href="https://github.com/wassii-khan-git/TaskFlow/stargazers">
-        <img src="https://img.shields.io/github/stars/wassii-khan-git/TaskFlow" alt="Stars">
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/stargazers">
+        <img src="https://img.shields.io/github/stars/wassii-khan-git/tasks-mangement
+" alt="Stars">
     </a>        
-    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">
-        <img src="https://img.shields.io/github/issues/wassii-khan-git/TaskFlow" alt="Issues">
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/issues">
+        <img src="https://img.shields.io/github/issues/wassii-khan-git/tasks-mangement
+" alt="Issues">
     </a>
-    <a href="https://github.com/wassii-khan-git/TaskFlow/graphs/contributors">
-        <img src="https://img.shields.io/github/contributors/wassii-khan-git/TaskFlow" alt="Contributors">
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/graphs/contributors">
+        <img src="https://img.shields.io/github/contributors/wassii-khan-git/tasks-mangement
+" alt="Contributors">
     </a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Report Bug</a>
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/issues">Report Bug</a>
     ·
-    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Request Feature</a>
+    <a href="https://github.com/wassii-khan-git/tasks-mangement
+/issues">Request Feature</a>
 </p>
 
 ## About The Project
