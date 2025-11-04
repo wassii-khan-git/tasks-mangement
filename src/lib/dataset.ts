@@ -1,7 +1,7 @@
 import { writeToFile } from "./actions";
 
 // generate dataset for contact
-export async function generateDataset(count: number) {
+export async function generateContactDataset(count: number) {
   const dataset = [];
   for (let i = 0; i < count; i++) {
     const id = i + 1;

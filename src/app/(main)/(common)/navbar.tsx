@@ -9,6 +9,12 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   {
+    label: "Tasks",
+    description: "Stay aligned with stakeholders",
+    href: "/",
+    icon: Users2,
+  },
+  {
     label: "Contacts",
     description: "Stay aligned with stakeholders",
     href: "/contacts",
@@ -21,7 +27,7 @@ const Navbar = () => {
 
   return (
     <header className="border-b bg-background">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 py-4 sm:px-8">
+      <div className="mx-auto max-w-7xl flex items-center justify-between gap-6 px-6 py-4 sm:px-8 lg:px-5">
         {/* Left: Brand */}
         <div className="flex flex-1 items-center gap-4">
           <Link href="/" className="flex items-center gap-3">
@@ -62,16 +68,6 @@ const Navbar = () => {
             );
           })}
         </nav>
-
-        {/* Right: Actions */}
-        <div className="flex items-center gap-2">
-          <Button asChild size="sm" variant="outline">
-            <Link href="/task/new">
-              <Plus />
-              Add task
-            </Link>
-          </Button>
-        </div>
       </div>
 
       {/* Mobile nav (unchanged) */}

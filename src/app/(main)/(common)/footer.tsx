@@ -8,50 +8,17 @@ import {
   Share2,
 } from "lucide-react";
 
-const footerSections = [
-  {
-    title: "Product",
-    links: [
-      { label: "Task Dashboard", href: "/task" },
-      { label: "Contacts CRM", href: "/contacts" },
-      { label: "Workflow Builder", href: "#" },
-      { label: "Automation Rules", href: "#" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Sprint Planning Guide", href: "#" },
-      { label: "Stand-up Checklist", href: "#" },
-      { label: "Release Notes", href: "#" },
-      { label: "API Docs", href: "#" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Help Center", href: "#" },
-      { label: "Status Page", href: "#" },
-      { label: "Community Forum", href: "#" },
-      { label: "Schedule a Demo", href: "#" },
-    ],
-  },
-];
+const footerSections = [{}];
 
 const socialLinks = [
   {
-    label: "Share milestone update",
-    href: "#",
-    icon: Share2,
-  },
-  {
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/wassii-khan-git",
     icon: Github,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/waseem-khan-5a9393214",
     icon: Linkedin,
   },
 ];
@@ -81,46 +48,17 @@ const Footer = () => {
             </p>
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <CalendarCheck2 className="size-4 text-primary" />
-                <span>
-                  Next milestone review{" "}
-                  <span className="font-medium text-foreground">
-                    Mon, Nov 17 · 09:00 AM
-                  </span>
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Mail className="size-4 text-primary" />
                 <Link
-                  href="mailto:support@taskflow.app"
+                  href="mailto:wassiikhan933@gmail.com"
                   className="hover:text-foreground"
                 >
-                  support@taskflow.app
+                  wassiikhan933@gmail.com
                 </Link>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-8 text-sm sm:grid-cols-2 lg:grid-cols-3">
-            {footerSections.map((section) => (
-              <div key={section.title} className="space-y-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  {section.title}
-                </h3>
-                <ul className="grid gap-3">
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <div className="grid grid-cols-1 gap-8 text-sm sm:grid-cols-2 lg:grid-cols-3"></div>
         </div>
         <div className="flex flex-col gap-4 border-t pt-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>

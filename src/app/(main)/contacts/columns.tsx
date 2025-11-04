@@ -13,8 +13,6 @@ export type ContactTypes = {
 export const getColumns = (): ColumnDef<ContactTypes>[] => [
   {
     id: "select",
-    enableSorting: false,
-    enableHiding: false,
   },
   // Column for Title
   {

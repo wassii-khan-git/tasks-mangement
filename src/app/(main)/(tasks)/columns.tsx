@@ -15,17 +15,13 @@ export type TaskType = {
 export function getTaskColumns({
   onEdit,
   onDelete,
-  onToggle,
 }: {
   onEdit: (row: TaskType) => void;
   onDelete: (row: TaskType) => void;
-  onToggle: (row: TaskType) => void;
 }): ColumnDef<TaskType, any>[] {
   return [
     {
       id: "select",
-      enableSorting: false,
-      enableHiding: false,
     },
     // Column for Title
     {
@@ -50,13 +46,17 @@ export function getTaskColumns({
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {
-        const t = row.original;
+        const task = row.original;
         return (
           <div className="flex items-center gap-2">
-            <Button size="sm" variant="secondary" onClick={() => onEdit(t)}>
+            <Button size="sm" variant="secondary" onClick={() => onEdit(task)}>
               Edit
             </Button>
-            <Button size="sm" variant="destructive" onClick={() => onDelete(t)}>
+            <Button
+              size="sm"
+              variant="destructive"
+              onClick={() => onDelete(task)}
+            >
               Delete
             </Button>
           </div>

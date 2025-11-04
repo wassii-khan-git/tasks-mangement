@@ -1,187 +1,17 @@
 [
   {
-    "id": "1",
-    "contactId": "1",
-    "title": "Task 1",
-    "description": "This is the description for task 1.",
-    "dueDate": "2025-11-03T18:28:36.225Z"
-  },
-  {
-    "id": "3",
-    "contactId": "3",
-    "title": "Task 3",
-    "description": "This is the description for task 3.",
-    "dueDate": "2025-11-05T18:28:36.342Z"
-  },
-  {
-    "id": "4",
-    "contactId": "4",
-    "title": "Task 4",
-    "description": "This is the description for task 4.",
-    "dueDate": "2025-11-06T18:28:36.349Z"
-  },
-  {
-    "id": "5",
-    "contactId": "5",
-    "title": "Task 5",
-    "description": "This is the description for task 5.",
-    "dueDate": "2025-11-07T18:28:36.370Z"
-  },
-  {
-    "id": "6",
-    "contactId": "6",
-    "title": "Task 6",
-    "description": "This is the description for task 6.",
-    "dueDate": "2025-11-08T18:28:36.375Z"
-  },
-  {
-    "id": "7",
-    "contactId": "7",
-    "title": "Task 7",
-    "description": "This is the description for task 7.",
-    "dueDate": "2025-11-09T18:28:36.384Z"
-  },
-  {
-    "id": "8",
-    "contactId": "8",
-    "title": "Task 8",
-    "description": "This is the description for task 8.",
-    "dueDate": "2025-11-10T18:28:36.387Z",
-    "completed": true
-  },
-  {
-    "id": "9",
-    "contactId": "9",
-    "title": "Task 9",
-    "description": "This is the description for task 9.",
-    "dueDate": "2025-11-11T18:28:36.393Z"
-  },
-  {
-    "id": "10",
-    "contactId": "10",
-    "title": "Task 10",
-    "description": "This is the description for task 10.",
-    "dueDate": "2025-11-12T18:28:36.402Z"
-  },
-  {
-    "id": "11",
-    "contactId": "1",
-    "title": "Task 11",
-    "description": "This is the description for task 11.",
-    "dueDate": "2025-11-13T18:28:36.409Z",
-    "completed": true
-  },
-  {
-    "id": "12",
-    "contactId": "2",
-    "title": "Task 12",
-    "description": "This is the description for task 12.",
-    "dueDate": "2025-11-14T18:28:36.415Z",
-    "completed": true
-  },
-  {
-    "id": "13",
-    "contactId": "3",
-    "title": "Task 13",
-    "description": "This is the description for task 13.",
-    "dueDate": "2025-11-15T18:28:36.418Z"
-  },
-  {
-    "id": "14",
-    "contactId": "4",
-    "title": "Task 14",
-    "description": "This is the description for task 14.",
-    "dueDate": "2025-11-16T18:28:36.425Z",
-    "completed": true
-  },
-  {
-    "id": "15",
-    "contactId": "5",
-    "title": "Task 15",
-    "description": "This is the description for task 15.",
-    "dueDate": "2025-11-17T18:28:36.429Z",
-    "completed": true
-  },
-  {
-    "id": "16",
-    "contactId": "6",
-    "title": "Task 16",
-    "description": "This is the description for task 16.",
-    "dueDate": "2025-11-18T18:28:36.432Z"
-  },
-  {
-    "id": "17",
-    "contactId": "7",
-    "title": "Task 17",
-    "description": "This is the description for task 17.",
-    "dueDate": "2025-11-19T18:28:36.442Z",
-    "completed": true
-  },
-  {
-    "id": "18",
-    "contactId": "8",
-    "title": "Task 18",
-    "description": "This is the description for task 18.",
-    "dueDate": "2025-11-20T18:28:36.446Z",
-    "completed": true
-  },
-  {
-    "id": "19",
-    "contactId": "9",
-    "title": "Task 19",
-    "description": "This is the description for task 19.",
-    "dueDate": "2025-11-21T18:28:36.449Z"
-  },
-  {
-    "id": "20",
-    "contactId": "10",
-    "title": "Task 20",
-    "description": "This is the description for task 20.",
-    "dueDate": "2025-11-22T18:28:36.451Z"
-  },
-  {
-    "id": "21",
-    "contactId": "1",
-    "title": "Task 21",
-    "description": "This is the description for task 21.",
-    "dueDate": "2025-11-23T18:28:36.470Z"
-  },
-  {
-    "id": "22",
-    "contactId": "2",
-    "title": "Task 22",
-    "description": "This is the description for task 22.",
-    "dueDate": "2025-11-24T18:28:36.472Z",
-    "completed": true
-  },
-  {
-    "id": "23",
-    "contactId": "3",
-    "title": "Task 23",
-    "description": "This is the description for task 23.",
-    "dueDate": "2025-11-25T18:28:36.476Z"
-  },
-  {
     "id": "24",
     "contactId": "4",
     "title": "Task 24",
     "description": "This is the description for task 24.",
-    "dueDate": "2025-11-26T18:28:36.484Z"
-  },
-  {
-    "id": "25",
-    "contactId": "5",
-    "title": "Task 25",
-    "description": "This is the description for task 25.",
-    "dueDate": "2025-11-27T18:28:36.487Z",
-    "completed": true
+    "dueDate": "2025-11-26T00:00:00.000Z"
   },
   {
     "id": "26",
-    "contactId": "6",
+    "contactId": "5",
     "title": "Task 26",
     "description": "This is the description for task 26.",
-    "dueDate": "2025-11-28T18:28:36.490Z"
+    "dueDate": "2025-11-28T00:00:00.000Z"
   },
   {
     "id": "27",
@@ -189,14 +19,6 @@
     "title": "Task 27",
     "description": "This is the description for task 27.",
     "dueDate": "2025-11-29T18:28:36.491Z"
-  },
-  {
-    "id": "28",
-    "contactId": "8",
-    "title": "Task 28",
-    "description": "This is the description for task 28.",
-    "dueDate": "2025-11-30T18:28:36.493Z",
-    "completed": true
   },
   {
     "id": "29",

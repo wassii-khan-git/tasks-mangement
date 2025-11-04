@@ -5,7 +5,11 @@ import { DataTable } from "@/components/data-table";
 import { ContactTypes, getColumns } from "../columns";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { searchContacts } from "../(actions)/actions";
+import {
+  searchContacts,
+  sortAscending,
+  sortDescending,
+} from "../(actions)/actions";
 import { useDebounce } from "@/hooks/use-debounce";
 
 interface MainContactProps {
@@ -51,6 +55,17 @@ const MainContacts = ({ contacts, page, limit, total }: MainContactProps) => {
     setContactsData(contacts);
   };
 
+  // handle sort
+  const handleSortAsc = async () => {
+    const result = await sortAscending(contacts);
+    setContactsData(result);
+  };
+
+  const handleSortDesc = async () => {
+    const result = await sortDescending(contacts);
+    setContactsData(result);
+  };
+
   // Side effect for debounce
   useEffect(() => {
     if (debouceValue) {
@@ -67,21 +82,45 @@ const MainContacts = ({ contacts, page, limit, total }: MainContactProps) => {
     <>
       <div className="my-24">
         {/* Search */}
-        <div className="max-w-3xs flex justify-center items-center gap-3 mx-6">
-          <Input
-            value={search}
-            placeholder="Search contacts"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          {/* Clear Search button + Search button */}
-          {search && (
-            <Button variant="outline" size="sm" onClick={handleClear}>
-              Clear
+        <div className="flex justify-between items-center">
+          {/*   Search  */}
+          <div className="max-w-3xs flex justify-center items-center gap-3 mx-6">
+            <Input
+              value={search}
+              placeholder="Search contacts"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+            {/* Clear Search button + Search button */}
+            {search && (
+              <Button variant="outline" size="sm" onClick={handleClear}>
+                Clear
+              </Button>
+            )}
+          </div>
+          {/*  Sort Buttons  */}
+          <div className="mx-6">
+            {/* Future use */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="mx-1"
+              onClick={handleSortAsc}
+            >
+              Sort Asc
             </Button>
-          )}
+            <Button
+              variant="outline"
+              size="sm"
+              className="mx-1"
+              onClick={handleSortDesc}
+            >
+              Sort Desc
+            </Button>
+          </div>
         </div>
+
         {/* Datatable */}
         <DataTable
           columns={columns}

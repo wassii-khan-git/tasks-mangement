@@ -56,5 +56,20 @@ export interface OptimisticTask extends Task {
 }
 
 export interface PaginationUrlProps {
-  searchParams: Promise<{ page?: string; limit?: string }>;
+  searchParams: Promise<{
+    page?: string;
+    limit?: string;
+    pageSize?: string;
+    search?: string;
+    sortField?: SortField;
+    sortOrder?: SortOrder;
+  }>;
+}
+
+// on save types
+export interface onSaveTypes<T = unknown> {
+  success: boolean;
+  message: string;
+  data?: T;
+  deletedId?: string;
 }

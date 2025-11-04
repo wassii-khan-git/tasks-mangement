@@ -7,6 +7,7 @@ import {
   TaskUpdateSchema,
 } from "../(validations)/tasks-validation";
 import z from "zod";
+import { revalidatePath } from "next/cache";
 
 // File directory
 const FILE_DIR = "./src/data/tasks.json";
@@ -27,18 +28,15 @@ async function writeJSON(tasks: TaskType[]): Promise<void> {
   await fs.writeFile(FILE_DIR, payload, "utf8");
 }
 
-function simulateFailure(rate = 0.15) {
-  if (Math.random() < rate) {
-    const err = new Error("Simulated API failure");
-    // Attach a lightweight code so UI can branch on it if needed
-    (err as any).code = "SIM_FAIL";
-    throw err;
-  }
-}
-
 type PaginationTypes = {
   limit: number;
   page: number;
+};
+
+const normalizeDueDate = (value?: string) => {
+  if (!value) return "";
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? value : parsed.toISOString();
 };
 
 // ---------- Pagination / Listing ----------
@@ -77,59 +75,57 @@ export async function getTasks({ limit, page }: PaginationTypes) {
 
 // ---------- Create ----------
 export async function createTask(input: z.infer<typeof TaskCreateSchema>) {
-  simulateFailure(0.1);
   const data = TaskCreateSchema.parse(input);
   const tasks = await readJSON();
 
   const id = (
     tasks.length ? Math.max(...tasks.map((t) => +t.id)) + 1 : 1
   ).toString();
-  const now = new Date().toISOString();
+
+  const dueDate =
+    data.dueDate && data.dueDate.trim() !== ""
+      ? normalizeDueDate(data.dueDate)
+      : new Date().toISOString();
 
   const newTask: TaskType = {
     id,
     contactId: data.contactId,
     title: data.title,
     description: data.description as string,
-    dueDate: data.dueDate || new Date().toISOString() || "",
+    dueDate,
   };
 
-  await writeJSON([newTask, ...tasks]); // prepend for snappier UX
+  await writeJSON([newTask, ...tasks]);
+  revalidatePath("/tasks");
   return newTask;
 }
 
 // ---------- Update ----------
 export async function updateTask(input: z.infer<typeof TaskUpdateSchema>) {
-  simulateFailure(0.1);
   const data = TaskUpdateSchema.parse(input);
   const tasks = await readJSON();
 
-  const idx = tasks.findIndex((t) => t.id === data.id);
+  const idx = tasks.findIndex((task) => task.id === data.id);
   if (idx === -1) throw new Error("Task not found");
 
-  tasks[idx] = { ...tasks[idx], ...data };
-  await writeJSON(tasks);
-  return tasks[idx];
-}
+  const updatedTask: TaskType = {
+    ...tasks[idx],
+    ...data,
+    dueDate: normalizeDueDate(data.dueDate ?? tasks[idx].dueDate),
+  };
 
-// ---------- Toggle ----------
-export async function toggleTask(id: string) {
-  simulateFailure(0.1);
-  const tasks = await readJSON();
-  const idx = tasks.findIndex((t) => t.id === id);
-  if (idx === -1) throw new Error("Task not found");
-
-  tasks[idx] = { ...tasks[idx] };
+  tasks[idx] = updatedTask;
   await writeJSON(tasks);
-  return tasks[idx];
+  revalidatePath("/tasks");
+  return updatedTask;
 }
 
 // ---------- Delete ----------
 export async function deleteTask(id: string) {
-  simulateFailure(0.1);
   const tasks = await readJSON();
-  const next = tasks.filter((t) => t.id !== id);
+  const next = tasks.filter((task) => task.id !== id);
   if (next.length === tasks.length) throw new Error("Task not found");
   await writeJSON(next);
+  revalidatePath("/tasks");
   return { id };
 }
