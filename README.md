@@ -1,33 +1,3 @@
-<p align="center">
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
-    </a>
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/stargazers">
-        <img src="https://img.shields.io/github/stars/wassii-khan-git/tasks-mangement
-" alt="Stars">
-    </a>        
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/issues">
-        <img src="https://img.shields.io/github/issues/wassii-khan-git/tasks-mangement
-" alt="Issues">
-    </a>
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/graphs/contributors">
-        <img src="https://img.shields.io/github/contributors/wassii-khan-git/tasks-mangement
-" alt="Contributors">
-    </a>
-</p>
-
-<p align="center">
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/wassii-khan-git/tasks-mangement
-/issues">Request Feature</a>
-</p>
-
 ## About The Project
 
 TaskFlow is a powerful task management tool for teams. It allows you to manage tasks, assign them to contacts, and track their progress.
