@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./(common)/footer";
 import Navbar from "./(common)/navbar";
-import { generateDataset } from "@/lib/dataset";
+import { generateDataset, generateTaskDataset } from "@/lib/dataset";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
 }>) {
   // for generating dataset
   // generateDataset(20);
+  // generateTaskDataset(100);
 
   return (
     <html lang="en">
@@ -36,6 +38,9 @@ export default function RootLayout({
         <Navbar />
         <main className="max-w-7xl mx-auto">{children}</main>
         <Footer />
+
+        {/* Toast container */}
+        <Toaster />
       </body>
     </html>
   );

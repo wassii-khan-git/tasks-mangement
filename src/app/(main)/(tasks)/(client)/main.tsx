@@ -16,55 +16,39 @@ import {
 } from "../(actions)/actions";
 import { toast } from "sonner";
 import { DataTable } from "@/components/data-table";
+import { ContactTypes } from "../../contacts/columns";
 
 type Props = {
   tasks: TaskType[];
+  contacts: ContactTypes[];
   total: number;
   page: number; // 1-based
   limit: number;
 };
 
-export default function MainTasks({ tasks, total, page, limit }: Props) {
-  const router = useRouter();
-  const sp = useSearchParams();
-
+export default function MainTasks({
+  tasks,
+  contacts,
+  total,
+  page,
+  limit,
+}: Props) {
   const [data, setData] = React.useState<TaskType[]>(tasks);
-  const [search, setSearch] = React.useState(sp.get("q") ?? "");
-  const debounced = useDebounce(search, 600);
 
   // Create/Edit modal state
   const [showForm, setShowForm] = React.useState(false);
   const [editing, setEditing] = React.useState<TaskType | null>(null);
   const [saving, setSaving] = React.useState(false);
 
-  React.useEffect(() => setData(tasks), [tasks]);
-
-  // When search changes, update URL (server filters)
-  React.useEffect(() => {
-    const params = new URLSearchParams(sp);
-    if (debounced) params.set("q", debounced);
-    else params.delete("q");
-    params.set("page", "1"); // reset to first page on new search
-    router.push(`/tasks?${params.toString()}`);
-  }, [debounced]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const columns = getTaskColumns({
     onToggle: async (row) => {
       // optimistic
-      setData((cur) =>
-        cur.map((t) =>
-          t.id === row.id ? { ...t, completed: !t.completed } : t
-        )
-      );
+      setData((cur) => cur.map((t) => (t.id === row.id ? { ...t } : t)));
       try {
         await toggleTask(row.id);
       } catch (e: any) {
         // revert and toast
-        setData((cur) =>
-          cur.map((t) =>
-            t.id === row.id ? { ...t, completed: !t.completed } : t
-          )
-        );
+        setData((cur) => cur.map((t) => (t.id === row.id ? { ...t } : t)));
         toast.error("Failed to toggle task");
       }
     },
@@ -97,7 +81,6 @@ export default function MainTasks({ tasks, total, page, limit }: Props) {
         const payload = {
           ...editing,
           ...values,
-          completed: editing.completed,
         };
         const updated = await updateTask(payload);
         setData((cur) => cur.map((t) => (t.id === updated.id ? updated : t)));
@@ -115,19 +98,17 @@ export default function MainTasks({ tasks, total, page, limit }: Props) {
     }
   };
 
+  React.useEffect(() => {
+    setData(tasks);
+  }, [limit, page]);
+
   return (
     <div className="my-6 space-y-4">
       {/* Header + Search + New */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-4">
         <h1 className="text-lg font-semibold">Tasks</h1>
         <div className="flex items-center gap-2">
-          <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search tasks (title, description, contactId)"
-            className="h-8 w-72"
-          />
-          <Button onClick={onCreate} size="sm">
+          <Button onClick={onCreate} size="sm" variant={"outline"}>
             New Task
           </Button>
         </div>
@@ -159,6 +140,7 @@ export default function MainTasks({ tasks, total, page, limit }: Props) {
               </Button>
             </div>
             <TaskForm
+              contacts={[]}
               initial={editing ?? undefined}
               onSubmit={onSubmitForm}
               onCancel={() => setShowForm(false)}

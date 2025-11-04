@@ -7,6 +7,8 @@ import {
   TaskUpdateSchema,
 } from "../(validations)/tasks-validation";
 import z from "zod";
+
+// File directory
 const FILE_DIR = "./src/data/tasks.json";
 
 // ---------- Utils ----------
@@ -34,59 +36,43 @@ function simulateFailure(rate = 0.15) {
   }
 }
 
-// ---------- Pagination / Listing ----------
-export async function getTasks({
-  limit,
-  page,
-  q,
-  sortBy = "createdAt",
-  sortDir = "desc",
-}: {
+type PaginationTypes = {
   limit: number;
-  page: number; // 1-based
-  q?: string; // search
-  sortBy?: keyof TaskType;
-  sortDir?: "asc" | "desc";
-}): Promise<{
-  tasks: TaskType[];
-  total: number;
   page: number;
-  totalPages: number;
-}> {
-  const all = await readJSON();
+};
 
-  // search (title + description + contactId)
-  const query = (q ?? "").trim().toLowerCase();
-  const filtered = query
-    ? all.filter((t) => {
-        return (
-          t.title.toLowerCase().includes(query) ||
-          (t.description ?? "").toLowerCase().includes(query) ||
-          t.contactId.toLowerCase().includes(query)
-        );
-      })
-    : all;
+// ---------- Pagination / Listing ----------
+// Get contacts
+export async function getTasks({ limit, page }: PaginationTypes) {
+  try {
+    // read data from the file
+    const data = await fs.readFile(FILE_DIR, "utf8");
 
-  // sort
-  const sorted = [...filtered].sort((a, b) => {
-    const va = a[sortBy];
-    const vb = b[sortBy];
-    // handle dates and strings uniformly
-    const A = typeof va === "string" ? va : JSON.stringify(va);
-    const B = typeof vb === "string" ? vb : JSON.stringify(vb);
-    if (A < B) return sortDir === "asc" ? -1 : 1;
-    if (A > B) return sortDir === "asc" ? 1 : -1;
-    return 0;
-  });
+    // parse the JSON data
+    const jsonData = JSON.parse(data) as TaskType[];
 
-  // paginate
-  const total = sorted.length;
-  const totalPages = Math.max(Math.ceil(total / Math.max(limit, 1)), 1);
-  const currentPage = Math.min(Math.max(page, 1), totalPages);
-  const start = (currentPage - 1) * limit;
-  const tasks = sorted.slice(start, start + limit);
+    const skip = (page - 1) * limit;
+    const total = jsonData.length;
 
-  return { tasks, total, page: currentPage, totalPages };
+    // pagination logic
+    const tasks = jsonData?.slice(skip, skip + limit);
+
+    // Return both tasks and pagination info
+    return {
+      tasks,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+    };
+  } catch (error: any) {
+    if (error?.code === "ENOENT") {
+      console.error("File not found:", FILE_DIR);
+      return { contacts: [], total: 0, page: 1, totalPages: 0 };
+    } else {
+      console.error("Error reading file:", error);
+      return { contacts: [], total: 0, page: 1, totalPages: 0 };
+    }
+  }
 }
 
 // ---------- Create ----------
@@ -104,10 +90,8 @@ export async function createTask(input: z.infer<typeof TaskCreateSchema>) {
     id,
     contactId: data.contactId,
     title: data.title,
-    description: data.description,
-    completed: false,
-    createdAt: now,
-    dueDate: data.dueDate,
+    description: data.description as string,
+    dueDate: data.dueDate || new Date().toISOString() || "",
   };
 
   await writeJSON([newTask, ...tasks]); // prepend for snappier UX
@@ -135,7 +119,7 @@ export async function toggleTask(id: string) {
   const idx = tasks.findIndex((t) => t.id === id);
   if (idx === -1) throw new Error("Task not found");
 
-  tasks[idx] = { ...tasks[idx], completed: !tasks[idx].completed };
+  tasks[idx] = { ...tasks[idx] };
   await writeJSON(tasks);
   return tasks[idx];
 }

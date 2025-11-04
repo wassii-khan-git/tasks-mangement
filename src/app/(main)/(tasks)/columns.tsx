@@ -1,19 +1,15 @@
 "use client";
 
-import * as React from "react";
-import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { DragHandle } from "@/components/data-table";
+import { type ColumnDef } from "@tanstack/react-table";
 
+// Define the shape of your contact data
 export type TaskType = {
-  id: string; // unique task id
-  contactId: string; // FK -> contacts.id (string to match your dataset)
+  id: string;
   title: string;
-  description?: string;
-  completed: boolean;
-  createdAt: string; // ISO string
-  dueDate?: string; // ISO string
+  description: string;
+  contactId: string;
+  dueDate: string;
 };
 
 export function getTaskColumns({
@@ -27,55 +23,27 @@ export function getTaskColumns({
 }): ColumnDef<TaskType, any>[] {
   return [
     {
-      id: "drag",
-      header: "",
-      cell: ({ row }) => <DragHandle id={row.id} />,
+      id: "select",
       enableSorting: false,
       enableHiding: false,
-      size: 44,
     },
-    {
-      accessorKey: "completed",
-      header: "Done",
-      enableSorting: true,
-      cell: ({ row }) => {
-        const t = row.original;
-        return (
-          <Checkbox
-            checked={t.completed}
-            onCheckedChange={() => onToggle(t)}
-            aria-label={`Mark ${t.title} as ${
-              t.completed ? "incomplete" : "complete"
-            }`}
-          />
-        );
-      },
-    },
+    // Column for Title
     {
       accessorKey: "title",
       header: "Title",
-      enableSorting: true,
       cell: ({ row }) => (
-        <span className="font-medium">{row.original.title}</span>
+        <div className="font-medium">{row.original?.title}</div>
       ),
     },
+    // Column for Slug
     {
-      accessorKey: "contactId",
-      header: "Contact ID",
-      enableSorting: true,
+      accessorKey: "description",
+      header: "Description",
+      cell: ({ row }) => (
+        <div className="font-mono">{row.original?.description}</div>
+      ),
     },
-    {
-      accessorKey: "dueDate",
-      header: "Due",
-      enableSorting: true,
-      cell: ({ row }) => row.original.dueDate,
-    },
-    {
-      accessorKey: "createdAt",
-      header: "Created",
-      enableSorting: true,
-      cell: ({ row }) => new Date(row.original.createdAt).toDateString(),
-    },
+
     {
       id: "actions",
       header: "Actions",
