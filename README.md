@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+    <h1 align="center">TaskFlow</h1>
+    <p align="center">
+        <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Report Bug</a>
+        ·
+        <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Request Feature</a>
+    </p>
+
+<p align="center">
+    <a href="https://github.com/wassii-khan-git/TaskFlow/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+    </a>
+    <a href="https://github.com/wassii-khan-git/TaskFlow/stargazers">
+        <img src="https://img.shields.io/github/stars/wassii-khan-git/TaskFlow" alt="Stars">
+    </a>        
+    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">
+        <img src="https://img.shields.io/github/issues/wassii-khan-git/TaskFlow" alt="Issues">
+    </a>
+    <a href="https://github.com/wassii-khan-git/TaskFlow/graphs/contributors">
+        <img src="https://img.shields.io/github/contributors/wassii-khan-git/TaskFlow" alt="Contributors">
+    </a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/wassii-khan-git/TaskFlow/issues">Request Feature</a>
+</p>
+
+## About The Project
+
+TaskFlow is a powerful task management tool for teams. It allows you to manage tasks, assign them to contacts, and track their progress.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js
+- NPM
+- Yarn
+- PNPM
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/wassii-khan-git/TaskFlow.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+cd TaskFlow
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the development server:
 
-## Learn More
+```sh
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Features
 
-## Deploy on Vercel
+- Create, update, and delete tasks
+- Assign tasks to contacts
+- Sort tasks by name, email, or due date
+- Filter tasks by search term
+- View tasks in a grid or list format
+- Search for tasks by name, email, or due date
+- Sort tasks by name, email, or due date
+- Filter tasks by search term
+- View tasks in a grid or list format
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### User Stories
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+As a user, I want to be able to create, update, and delete tasks so that I can manage my tasks effectively.
+
+As a user, I want to be able to assign tasks to contacts so that I can keep track of who is responsible for each task.
+
+As a user, I want to be able to sort tasks by name, email, or due date so that I can easily find the task I need.
+
+As a user, I want to be able to filter tasks by search term so that I can quickly find the task I need.
+
+As a user, I want to be able to view tasks in a grid or list format so that I can easily manage my tasks.
+
+As a user, I want to be able to search for tasks by name, email, or due date so that I can quickly find the task I need.
+
+As a user, I want to be able to sort tasks by name, email, or due date so that I can easily find the task I need.
+
+As a user, I want to be able to filter tasks by search term so that I can quickly find the task I need.
+
+As a user, I want to be able to view tasks in a grid or list format so that I can easily manage my tasks.
+
+As a user, I want to be able to search for tasks by name, email, or due date so that I can quickly find the task I need.
+
+## Contributing
+
+Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) for more information.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Acknowledgments
+
+- The [Tailwind CSS](https://tailwindcss.com/) framework for styling the user interface.
+- The [Next.js](https://nextjs.org/) framework for building the server-side rendering (SSR) of the application.
+- The [React](https://reactjs.org/) library for building the user interface.
+- The [Zod](https://github.com/colinhacks/zod) library for defining the data schema.
+
+## Author
+
+    Wassii Khan
+    Github: https://github.com/wassii-khan-git
+    LinkedIn: https://www.linkedin.com/in/waseem-khan-5a9393214/
+    Twitter: https://twitter.com/wassiikhan933
+    Email: wassiikhan933@gmail.com
