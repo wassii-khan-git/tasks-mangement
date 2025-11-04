@@ -20,8 +20,8 @@ git clone https://github.com/wassii-khan-git/tasks-mangement.git
 2. Install dependencies:
 
 ```sh
-cd TaskFlow
-yarn install
+cd tasks-mangement
+pnpm install Or npm install
 ```
 
 3. Run the development server:
