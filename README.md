@@ -7,8 +7,6 @@ TaskFlow is a powerful task management tool for teams. It allows you to manage t
 ### Prerequisites
 
 - Node.js
-- NPM
-- Yarn
 - PNPM
 
 ### Installation
@@ -16,7 +14,7 @@ TaskFlow is a powerful task management tool for teams. It allows you to manage t
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/wassii-khan-git/TaskFlow.git
+git clone https://github.com/wassii-khan-git/tasks-mangement.git
 ```
 
 2. Install dependencies:
