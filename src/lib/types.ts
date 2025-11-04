@@ -18,54 +18,6 @@ export interface Task {
   dueDate?: string;
 }
 
-// Payload return types
-export interface PayloadReturn<T = unknown> {
-  success: boolean;
-  message: string;
-  data?: T;
-  error?: string;
-}
-
-export type SortField = "name" | "email" | "company";
-export type SortOrder = "asc" | "desc";
-
-export interface ContactsFilter {
-  search: string;
-  sortField: SortField;
-  sortOrder: SortOrder;
-  page: number;
-  pageSize: number;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  pageSize: number;
-  totalPages: number;
-}
-
-export interface ApiError {
-  message: string;
-  code?: string;
-}
-
-export interface OptimisticTask extends Task {
-  optimistic?: boolean;
-  error?: boolean;
-}
-
-export interface PaginationUrlProps {
-  searchParams: Promise<{
-    page?: string;
-    limit?: string;
-    pageSize?: string;
-    search?: string;
-    sortField?: SortField;
-    sortOrder?: SortOrder;
-  }>;
-}
-
 // on save types
 export interface onSaveTypes<T = unknown> {
   success: boolean;

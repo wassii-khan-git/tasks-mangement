@@ -37,7 +37,6 @@ export default function RootLayout({
         <Navbar />
         <main className="max-w-7xl mx-auto">{children}</main>
         <Footer />
-
         {/* Toast container */}
         <Toaster position="top-right" richColors />
       </body>
