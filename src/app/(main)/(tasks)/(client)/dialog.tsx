@@ -234,15 +234,25 @@ export default function TaskDialog({
                     name="contactId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Contact</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter contact ID"
-                            {...field}
-                            value={field.value ?? ""}
-                            disabled={true}
-                          />
-                        </FormControl>
+                        <FormLabel>Contact *</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value === "" ? undefined : field.value}
+                          disabled={loading}
+                        >
+                          <FormControl className="w-full">
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select contact" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {filteredContacts.map((contact) => (
+                              <SelectItem key={contact.id} value={contact.id}>
+                                {contact.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}

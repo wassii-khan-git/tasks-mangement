@@ -16,7 +16,7 @@ export default async function TasksPage({ searchParams }: PaginationUrlProps) {
   });
 
   // fetch contacts
-  const { contacts } = await getContacts({});
+  const { contacts } = await getContacts({ limit: 100, page: 1 });
 
   return (
     <MainTasks
