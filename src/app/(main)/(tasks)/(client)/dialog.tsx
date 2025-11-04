@@ -100,24 +100,6 @@ export default function TaskDialog({
   });
 
   const [loading, setLoading] = useState(false);
-  const [contactQuery, setContactQuery] = useState("");
-
-  const filteredContacts = useMemo(() => {
-    const term = contactQuery.trim().toLowerCase();
-    if (!term) return contacts;
-
-    return contacts.filter((contact) => {
-      const haystack = [
-        contact.name ?? "",
-        contact.email ?? "",
-        contact.phone ?? "",
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      return haystack.includes(term);
-    });
-  }, [contactQuery, contacts]);
 
   useEffect(() => {
     if (open) {
@@ -127,13 +109,12 @@ export default function TaskDialog({
 
   useEffect(() => {
     if (!open) {
-      setContactQuery("");
+      setLoading(false);
     }
   }, [open]);
 
   const handleClose = () => {
     form.reset(initialValues);
-    setContactQuery("");
     onOpenChange(false);
   };
 
@@ -206,16 +187,7 @@ export default function TaskDialog({
   };
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={(next) => {
-        if (next) {
-          onOpenChange(true);
-        } else {
-          handleClose();
-        }
-      }}
-    >
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-xl">
         <DialogHeader>
           <DialogTitle>{meta.title}</DialogTitle>
@@ -246,7 +218,7 @@ export default function TaskDialog({
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            {filteredContacts.map((contact) => (
+                            {contacts.map((contact) => (
                               <SelectItem key={contact.id} value={contact.id}>
                                 {contact.name}
                               </SelectItem>
